@@ -11,6 +11,8 @@ The rest of the file is a binary data array used to create graphs of the
 prevalence of the various cells found in blood.
 
 """
+import json
+
 class FCSFormatError(Exception):
     pass
     
@@ -20,7 +22,7 @@ def parse_fcs(root_path):
     try:
         f = open(root_path, "r+b")
     except IOError:
-        logger.warn("File not found: {}".format(root_path))
+        print ("File not found: {}".format(root_path))
         return
     with f:
         # is this even a valid FCS file? first 3 characters should say FCS
